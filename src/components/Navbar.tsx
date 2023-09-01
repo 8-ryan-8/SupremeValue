@@ -1,4 +1,4 @@
-import { useSession, signOut, signIn } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 
 export default function NavBar() {
