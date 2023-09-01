@@ -1,6 +1,8 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
+import Head from "next/head";
+import NavBar from "~/components/Navbar";
 
 import { api } from "~/utils/api";
 
@@ -12,7 +14,15 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <Head>
+        <title>Supreme Value</title>
+      </Head>
+      <div className="container max-auto flex items-start">
+        <NavBar />
+        <div className="min-h-screen flex-grow border-x">
+          <Component {...pageProps} />
+        </div>
+      </div>
     </SessionProvider>
   );
 };
