@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
-// import _ from '../../node_modules/lodash';
+import cloneDeep from 'lodash/cloneDeep';
 
 type questionType = {
     question: string,
-    value: number | undefined,
+    value: number,
 }
 
-interface questionsDataType {
-    [key: string]: questionType
-    priority: questionType,
-    price: questionType,
-    quality: questionType,
-    features: questionType,
-}
+type questionsDataType = Map<string, questionType>;
 
 type QuestionProps = {
     setFormData: React.Dispatch<React.SetStateAction<questionsDataType>>,
@@ -21,28 +15,32 @@ type QuestionProps = {
 }
 
 export default function Question({setFormData, formData, category} : QuestionProps) {
-    const {question, value} = formData[category]!;
-
+    const formDataEntry = formData.get(category);
+        
     const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(category, "slider Value", e.target.value);
-        // setFormData((prevFormData) => {
-        //     const prevFormDataClone = _.cloneDeep(prevFormData);
-        // })
-        // setAnswer(parseInt(e.target.value, 10));
+        setFormData((prevFormData: questionsDataType) => {
+            const prevFormDataClone: questionsDataType = cloneDeep(prevFormData);
+            const prevFormDataCloneEntry = prevFormDataClone.get(category);
+            if (prevFormDataCloneEntry) {
+                prevFormDataCloneEntry.value = parseInt(e.target.value);
+            }
+            return prevFormDataClone;
+        })
       };
 
     return (
         <>
             <div className="mb-4">
-                <label className="block text-gray-700 text-sm font-bold mb-2">{question}</label>
+                <label className="block text-gray-700 text-sm font-bold mb-2">{formDataEntry?.question}</label>
                 <input
                 type="range"
                 min="-5"
                 max="10"
-                value={value}
+                value={formDataEntry?.value}
                 onChange={(e) => handleSliderChange(e)}
                 className="w-full"
                 />
+                <h4>{formDataEntry?.value}</h4>
             </div>
         </>
     )

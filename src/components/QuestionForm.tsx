@@ -3,35 +3,32 @@ import Question from "./Question"
 
 type questionType = {
     question: string,
-    value: number | undefined,
+    value: number,
 }
 
-interface questionsDataType {
-    [key: string]: questionType
-    priority: questionType,
-    price: questionType,
-    quality: questionType,
-    features: questionType,
-}
+type questionsDataType = Map<string, questionType>;
 
-const DEFAULT_QUESTIONS_DATA: questionsDataType = {
-    priority: {
-        question: "How important is this for me? How much do you need this?",
-        value: undefined,
-    },
-    price: {
-        question: "How is the price?",
-        value: undefined,
-    },
-    quality: {
-        question: "How is the quality?",
-        value: undefined,
-    },
-    features: {
-        question: "What else can it do? How does it stand out?",
-        value: undefined,
-    },
-}
+const INITIAL_DATA: Array<[string, questionType]> = [
+  ["priority", {
+    question: "How important is this for me? How much do you need this?",
+    value: 0,
+}],
+["price", {
+  question: "How is the price?",
+  value: 0,
+}],
+["quality", {
+  question: "How is the quality??",
+  value: 0,
+}],
+["features", {
+  question: "What else can it do? How does it stand out?",
+  value: 0,
+}],
+
+]
+
+const DEFAULT_QUESTIONS_DATA: questionsDataType = new Map(INITIAL_DATA);
 
 const TITLE = "Rank Your Product"
 
@@ -39,6 +36,7 @@ export default function QuestionForm() {
     const [searchProductName, setSearchProductName] = useState<string>("");
     const [createProductName, setCreateProductName] = useState<string>("");
     const [formData, setFormData] = useState<questionsDataType>(DEFAULT_QUESTIONS_DATA);
+    const formDataKeys = Array.from(formData.keys());
 
     function handleSearchProductNameChange(e:ChangeEvent<HTMLInputElement>) {
         const value: string = e.target.value;
@@ -72,7 +70,7 @@ export default function QuestionForm() {
             />
           </form>
           <form className="max-w-[600px] mx-auto p-4 shadow-md border rounded-lg">
-            {Object.keys(formData).map((category, idx) => {
+            {formDataKeys.map((category, idx) => {
             return (
               <Question key={idx} setFormData={setFormData} formData={formData} category={category}/>
             )})}
