@@ -40,7 +40,9 @@ export default function QuestionForm() {
     
     function handleSubmitProductRatings(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
-      console.log("submitted Data", formData);
+      console.log("searchProductName", searchProductName);
+      console.log("rankings", formData);
+      setFormData(DEFAULT_QUESTIONS_DATA);
     }
 
     function handleSearchProductNameChange(e:ChangeEvent<HTMLInputElement>) {

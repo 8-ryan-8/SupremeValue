@@ -42,9 +42,9 @@ export default function Question({setFormData, formData, category} : QuestionPro
                 max="10"
                 value={formDataEntry?.value}
                 onChange={(e) => handleSliderChange(e)}
-                className={`w-full bg-customBlue`}
+                className={`w-full`}
                 />
-                <h4>{formDataEntry?.value} : {tier}</h4>
+                <h4 className={`bg-custom${tier} text-white text-center py-3`}>{tier}</h4>
             </div>
         </>
     )

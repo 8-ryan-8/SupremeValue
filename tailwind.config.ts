@@ -5,15 +5,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        customBlue: '#FF7F7F',
-        ATier: '#F1AC7F',
-        BTier: '#F4EFA4',
-        CTier: '#62B198',
-        DTier: '#7FBFFF',
-        ETier: '#7F7FFF',
-        FTier: '#D183D1',
+        'customSTier': '#FF7F7F',
+        'customATier': '#F1AC7F',
+        'customBTier': '#F4EFA4',
+        'customCTier': '#62B198',
+        'customDTier': '#7FBFFF',
+        'customETier': '#7F7FFF',
+        'customFTier': '#D183D1',
       },
     }
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 } satisfies Config;
