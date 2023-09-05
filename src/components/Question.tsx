@@ -16,6 +16,10 @@ type QuestionProps = {
 
 export default function Question({setFormData, formData, category} : QuestionProps) {
     const formDataEntry = formData.get(category);
+    let tier;
+    if (formDataEntry) {
+        tier = getTier(formDataEntry?.value);
+    }
         
     const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData((prevFormData: questionsDataType) => {
@@ -38,10 +42,19 @@ export default function Question({setFormData, formData, category} : QuestionPro
                 max="10"
                 value={formDataEntry?.value}
                 onChange={(e) => handleSliderChange(e)}
-                className="w-full"
+                className={`w-full bg-customBlue`}
                 />
-                <h4>{formDataEntry?.value}</h4>
+                <h4>{formDataEntry?.value} : {tier}</h4>
             </div>
         </>
     )
+}
+
+function getTier(value: number) {
+    if (value >= 6 && value <= 10) return 'STier';
+    if (value >= 5 && value < 6) return 'ATier';
+    if (value >= 4 && value < 5) return 'BTier';
+    if (value >= 3 && value < 4) return 'CTier';
+    if (value >= 0 && value < 3) return 'DTier';
+    if (value < 0) return 'FTier';
 }

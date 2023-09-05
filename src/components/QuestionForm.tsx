@@ -37,6 +37,11 @@ export default function QuestionForm() {
     const [createProductName, setCreateProductName] = useState<string>("");
     const [formData, setFormData] = useState<questionsDataType>(DEFAULT_QUESTIONS_DATA);
     const formDataKeys = Array.from(formData.keys());
+    
+    function handleSubmitProductRatings(e: React.FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+      console.log("submitted Data", formData);
+    }
 
     function handleSearchProductNameChange(e:ChangeEvent<HTMLInputElement>) {
         const value: string = e.target.value;
@@ -69,7 +74,7 @@ export default function QuestionForm() {
                 className="border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full"
             />
           </form>
-          <form className="max-w-[600px] mx-auto p-4 shadow-md border rounded-lg">
+          <form className="max-w-[600px] mx-auto p-4 shadow-md border rounded-lg" onSubmit={handleSubmitProductRatings}>
             {formDataKeys.map((category, idx) => {
             return (
               <Question key={idx} setFormData={setFormData} formData={formData} category={category}/>
