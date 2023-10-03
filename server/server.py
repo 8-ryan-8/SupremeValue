@@ -3,7 +3,7 @@ from flask import Flask
 app = Flask(__name__)
 
 #home
-@app.route("/")
+@app.route("/members")
 def members():
     return {"members": ["Member 1", "Member 2", "Member 6"]}
 
