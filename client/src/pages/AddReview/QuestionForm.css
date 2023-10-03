@@ -1,0 +1,74 @@
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 4px;
+    margin-top: 10px;
+  }
+  
+  .form-wrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+  }
+  
+  .input-label {
+    display: block;
+    color: #4b5563;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .input-text {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 8px;
+    color: #374151;
+    font-size: 1rem;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    width: 100%;
+  }
+  
+  .my-product-title {
+    display: block;
+    color: #4b5563;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  
+  .question-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+  }
+  
+  .submit-button {
+    text-align: center;
+    margin-top: 16px;
+  }
+  
+  .submit-button-bg {
+    background-color: #2563eb;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .submit-button-bg:hover {
+    background-color: #1c4c9e;
+  }

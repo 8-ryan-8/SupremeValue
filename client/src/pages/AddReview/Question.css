@@ -1,0 +1,50 @@
+.question {
+    margin-bottom: 1rem;
+}
+
+.question-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.question-slider {
+    width: 100%;
+}
+
+.tier {
+    font-weight: 600;
+    text-align: center;
+    padding: 0.75rem;
+}
+
+.tier-STier {
+    background-color: #FF7F7F;
+    color: white;
+}
+
+.tier-ATier {
+    background-color: #F1AC7F;
+    color: #333;
+}
+
+.tier-BTier {
+    background-color: #F4EFA4;
+    color: #333;
+}
+
+.tier-CTier {
+    background-color: #62B198;
+    color: white;
+}
+
+.tier-DTier {
+    background-color: #7FBFFF;
+    color: white;
+}
+
+.tier-FTier {
+    background-color: #7F7FFF;
+    color: white;
+}
