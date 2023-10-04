@@ -9,7 +9,7 @@ type questionType = {
 
 type questionsDataType = Map<string, questionType>;
 
-const INITIAL_DATA: Array<[string, questionType]> = [
+const INITIAL_QUESTIONS_DATA: Array<[string, questionType]> = [
   [
     "priority",
     {
@@ -40,7 +40,7 @@ const INITIAL_DATA: Array<[string, questionType]> = [
   ],
 ];
 
-const DEFAULT_QUESTIONS_DATA: questionsDataType = new Map(INITIAL_DATA);
+const DEFAULT_QUESTIONS_DATA: questionsDataType = new Map(INITIAL_QUESTIONS_DATA);
 
 export default function QuestionForm() {
   const [createProductName, setCreateProductName] = useState<string>("");
@@ -49,18 +49,26 @@ export default function QuestionForm() {
     DEFAULT_QUESTIONS_DATA
   );
   const formDataKeys = Array.from(formData.keys());
+  const [canSubmitReview, setCanSubmitReview] = useState(false)
 
-  function handleSubmitProductRatings(
+  async function handleSubmitProductRatings(
     e: React.FormEvent<HTMLFormElement>
   ) {
     e.preventDefault();
     setFormData(DEFAULT_QUESTIONS_DATA);
     setMyProductName("");
+    setCanSubmitReview(false);
+    const res  = await fetch('/api');
+    const data = await res.json();
+    console.log("fetch data:", data);
+    console.log("formData", formData);
+    
   }
 
   function handleCreateProduct(e: React.FormEvent<HTMLFormElement>) {
     setMyProductName(createProductName);
     setCreateProductName("");
+    setCanSubmitReview(true);
     e.preventDefault();
   }
 
@@ -101,9 +109,11 @@ export default function QuestionForm() {
           <button
             type="submit"
             className="submit-button-bg"
+            disabled={!canSubmitReview}
           >
             Submit
           </button>
+          {!canSubmitReview}
         </div>
       </form>
     </>
