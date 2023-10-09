@@ -1,8 +1,15 @@
 from flask import Flask
 from flask_pymongo import PyMongo
+import os
+from dotenv import load_dotenv, dotenv_values
+
+load_dotenv()
+
+print(os.getenv("SECRET_KEY"))
+print(os.getenv("MONGO_URI"))
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = #insert SECRET_KEY
+app.config["SECRET_KEY"] = #insert SECRET_KEY  
 app.config["MONGO_URI"] = #insert MONGO_URI
 
 mongodb_client = PyMongo(app)
