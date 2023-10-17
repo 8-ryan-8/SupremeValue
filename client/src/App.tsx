@@ -7,7 +7,7 @@ import MyReviews from './pages/MyReviews/MyReviews';
 import Profile from './pages/Profile/Profile';
 import { Route, Routes } from 'react-router-dom'
 
-// contribution test
+// branch protection test 2.o
 
 function App() {
   return (
