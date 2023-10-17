@@ -7,6 +7,8 @@ import MyReviews from './pages/MyReviews/MyReviews';
 import Profile from './pages/Profile/Profile';
 import { Route, Routes } from 'react-router-dom'
 
+// contribution test
+
 function App() {
   return (
     <>
